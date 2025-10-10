@@ -125,7 +125,7 @@ function AudioButton({ id, data, onSave, onDelete }) {
 
   return (
     <div
-      className="button-tile"
+      className={`button-tile ${playing ? 'playing' : ''}`}
       style={{
         backgroundImage: hasImage ? `url(${imageURL})` : 'none',
         backgroundColor: bgColor,
@@ -169,8 +169,8 @@ function AudioButton({ id, data, onSave, onDelete }) {
           )}
         </div>
 
-        <div className="controls">
-          <label onClick={e => e.stopPropagation()}>
+        <div className="controls" onClick={e => e.stopPropagation()}>
+          <label>
             🎵
             <input
               ref={audioInputRef}
@@ -181,7 +181,7 @@ function AudioButton({ id, data, onSave, onDelete }) {
             />
           </label>
 
-          <label onClick={e => e.stopPropagation()}>
+          <label>
             🖼️
             <input
               ref={imageInputRef}
@@ -194,7 +194,6 @@ function AudioButton({ id, data, onSave, onDelete }) {
 
           <input
             type="color"
-            onClick={e => e.stopPropagation()}
             onChange={handleColorChange}
             title="Background color"
             value={data?.color || '#4b5563'}
@@ -249,7 +248,7 @@ export default function App() {
   return (
     <div className="app">
       <header>
-        <h1>🎛️ Custom Audio Buttons</h1>
+        <h1>🎛️ DA BUTTONS by OVERCOMMIT</h1>
         <button className="add-btn" onClick={addButton}>
           + Add Button
         </button>
